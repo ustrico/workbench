@@ -10,8 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home
+    },
+    {
+      path: '/email',
+      name: 'Email',
+      component: () => import('./views/Email.vue')
     },
     {
       path: '/about',

@@ -1,29 +1,44 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app dark>
+    <Menu/>
+    <v-toolbar
+      app
+      class="blue-grey darken-3"
+    >
+      <v-toolbar-side-icon @click.stop="menuToggle"></v-toolbar-side-icon>
+      <v-toolbar-title v-text="title"></v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+      <router-view/>
+    </v-content>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import Menu from '@/components/Menu'
+export default {
+  name: 'App',
+  data () {
+    return {
+      title: 'Workbench'
     }
+  },
+  methods: {
+    menuToggle () {
+      this.$root.$emit('menuToggle')
+    }
+  },
+  components: {
+    Menu
   }
 }
-</style>
+/*
+TODO
+редактор шаблонов
+список писем
+версии, конфирм при смене шаблона
+дата листается
+подсветка
+только контент в редакторе
+*/
+</script>
